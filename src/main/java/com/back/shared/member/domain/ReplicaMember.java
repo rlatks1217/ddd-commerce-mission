@@ -13,4 +13,8 @@ public class ReplicaMember extends BaseMember {
     private String id;
     private LocalDateTime createDate;
     private LocalDateTime modifyDate;
+
+    public ReplicaMember(String username, String password, String nickname) {
+        super(username, password, nickname, 0);
+    }
 }
