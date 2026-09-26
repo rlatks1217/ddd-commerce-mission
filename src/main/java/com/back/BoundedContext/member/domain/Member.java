@@ -1,9 +1,9 @@
 package com.back.BoundedContext.member.domain;
 
 import com.back.shared.member.domain.SourceMember;
+import com.back.BoundedContext.member.dto.MemberDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,5 +14,16 @@ import lombok.NoArgsConstructor;
 public class Member extends SourceMember {
     public Member(String username, String password, String nickname) {
         super(username, password, nickname);
+    }
+
+    public MemberDto toDto() {
+        return new MemberDto(
+                getId(),
+                getCreateDate(),
+                getModifyDate(),
+                getUsername(),
+                getNickname(),
+                getActivityScore()
+        );
     }
 }
