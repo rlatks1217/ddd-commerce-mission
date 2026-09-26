@@ -19,6 +19,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PostFacade {
     private final PostMemberRepository postMemberRepository;
+    private final PostRepository postRepository;
     private final PostWriteUseCase postWriteUseCase;
 
     @Transactional
@@ -36,11 +37,22 @@ public class PostFacade {
         postMemberRepository.save(postMember);
     }
 
+    @Transactional
     public Optional<PostMember> findByUsername(String username) {
         return postMemberRepository.findByUsername(username);
     }
 
+    @Transactional
     public RsData<Post> write(PostMember author, String title, String content) {
         return postWriteUseCase.write(author, title, content);
+    }
+
+    @Transactional
+    public long count() {
+        return postRepository.count();
+    }
+
+    public Optional<Post> finById(int id) {
+        return postRepository.findById(id);
     }
 }

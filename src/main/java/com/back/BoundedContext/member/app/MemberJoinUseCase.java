@@ -24,4 +24,6 @@ public class MemberJoinUseCase {
         eventPublisher.publishEvent(new MemberJoinEvent(member.toDto()));
         return new RsData<Member>("201-1", "유저 생성 완료", member);
     }
+
+
 }

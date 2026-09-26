@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @Table(name = "POST_MEMBER")
 @Getter
 @NoArgsConstructor
+@ToString
 public class PostMember extends ReplicaMember {
     public PostMember(int id, LocalDateTime createDate, LocalDateTime modifyDate,
                       String username, String password, String nickname, int activityScore) {

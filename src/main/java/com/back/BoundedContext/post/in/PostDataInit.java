@@ -30,11 +30,14 @@ public class PostDataInit {
     public ApplicationRunner postDataInitApplicationRunner() {
         return args -> {
             self.makeBasePosts();
+            self.makeBasePostComments();
         };
     }
 
     @Transactional
     public void makeBasePosts() {
+        if (postFacade.count() > 0) return;
+
         PostMember user1 = postFacade.findByUsername("user1").get();
         PostMember user2 = postFacade.findByUsername("user2").get();
         PostMember user3 = postFacade.findByUsername("user3").get();
@@ -45,5 +48,12 @@ public class PostDataInit {
         Post post4 = postFacade.write(user2, "제목4", "내용4").getData();
         Post post5 = postFacade.write(user2, "제목5", "내용5").getData();
         Post post6 = postFacade.write(user3, "제목6", "내용6").getData();
+    }
+
+    @Transactional
+    public void makeBasePostComments() {
+        PostMember user1 = postFacade.findByUsername("user1").get();
+        Post post = postFacade.finById(1).get();
+        post.comment(user1, "댓글1");
     }
 }
