@@ -3,18 +3,23 @@ package com.back.shared.member.domain;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import jakarta.persistence.Id;
 
 import java.time.LocalDateTime;
 
 @MappedSuperclass
 @Getter
 @NoArgsConstructor
-public class ReplicaMember extends BaseMember {
-    private String id;
+public abstract class ReplicaMember extends BaseMember {
+    @Id
+    private int id;
     private LocalDateTime createDate;
     private LocalDateTime modifyDate;
 
-    public ReplicaMember(String username, String password, String nickname) {
-        super(username, password, nickname, 0);
+    public ReplicaMember(int id, LocalDateTime createDate, LocalDateTime modifyDate, String username, String password, String nickname, int activityScore) {
+        super(username, password, nickname, activityScore);
+        this.id = id;
+        this.createDate = createDate;
+        this.modifyDate = modifyDate;
     }
 }

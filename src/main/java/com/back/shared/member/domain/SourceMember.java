@@ -1,7 +1,9 @@
 package com.back.shared.member.domain;
 
-import jakarta.persistence.*;
-import lombok.Generated;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;

@@ -1,13 +1,10 @@
 package com.back.shared.member.domain;
 
-import com.back.global.BaseEntity;
+import com.back.global.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 @MappedSuperclass
 @Getter
