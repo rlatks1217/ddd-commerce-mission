@@ -51,7 +51,25 @@ public class PostDataInit {
     @Transactional
     public void makeBasePostComments() {
         PostMember user1 = postFacade.findByUsername("user1").get();
-        Post post = postFacade.finById(1).get();
-        postFacade.addComment(post, user1, "댓글1");
+        PostMember user2 = postFacade.findByUsername("user2").get();
+        PostMember user3 = postFacade.findByUsername("user3").get();
+
+        Post post1 = postFacade.finById(1).get();
+        Post post2 = postFacade.finById(2).get();
+        Post post3 = postFacade.finById(3).get();
+        Post post4 = postFacade.finById(4).get();
+        Post post5 = postFacade.finById(5).get();
+        Post post6 = postFacade.finById(6).get();
+
+        if (post1.hasComments()) return;
+
+        postFacade.addComment(post1, user1, "댓글1");
+        postFacade.addComment(post1, user1, "댓글2");
+        postFacade.addComment(post2, user2, "댓글3");
+        postFacade.addComment(post2, user2, "댓글4");
+        postFacade.addComment(post2, user2, "댓글5");
+        postFacade.addComment(post3, user3, "댓글6");
+        postFacade.addComment(post3, user3, "댓글7");
+        postFacade.addComment(post3, user3, "댓글8");
     }
 }

@@ -53,4 +53,8 @@ public class Post extends BaseGeneratedInfo {
         comments.add(comment);
         return comment;
     }
+
+    public boolean hasComments() {
+        return !comments.isEmpty();
+    }
 }
