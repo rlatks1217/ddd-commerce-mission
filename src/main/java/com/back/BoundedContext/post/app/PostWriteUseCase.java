@@ -1,19 +1,32 @@
-package com.back.BoundedContext.post.app;
+package com.back.boundedContext.post.app;
 
-import com.back.BoundedContext.post.domain.Post;
-import com.back.BoundedContext.post.domain.PostMember;
-import com.back.BoundedContext.post.out.PostRepository;
+import com.back.boundedContext.post.domain.Post;
+import com.back.boundedContext.post.domain.PostMember;
+import com.back.boundedContext.post.out.PostRepository;
 import com.back.global.response.RsData;
+import com.back.shared.member.out.MemberApiClient;
+import com.back.shared.post.event.CreatePostEvent;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class PostWriteUseCase {
     private final PostRepository postRepository;
+    private final ApplicationEventPublisher eventPublisher;
+    private final MemberApiClient memberApiClient;
 
     public RsData<Post> write(PostMember author, String title, String content) {
         Post post = postRepository.save(new Post(author, title, content));
-        return new RsData<Post>("200-1", "글 생성완료", post);
+        String randomSecureTip = memberApiClient.getRandomSecureTip();
+        eventPublisher.publishEvent(new CreatePostEvent(post.toDto()));
+
+        return new RsData<>(
+                "201-1",
+                "%d번 글이 생성되었습니다. 보안 팁 : %s"
+                        .formatted(post.getId(), randomSecureTip),
+                post
+        );
     }
 }

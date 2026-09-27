@@ -1,6 +1,6 @@
 package com.back.shared.member.event;
 
-import com.back.BoundedContext.member.dto.MemberDto;
+import com.back.boundedContext.member.dto.MemberDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

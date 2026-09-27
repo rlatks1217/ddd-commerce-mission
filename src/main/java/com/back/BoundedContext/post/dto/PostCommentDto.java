@@ -1,4 +1,4 @@
-package com.back.BoundedContext.post.dto;
+package com.back.boundedContext.post.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

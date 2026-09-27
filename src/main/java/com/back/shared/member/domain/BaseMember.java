@@ -3,11 +3,14 @@ package com.back.shared.member.domain;
 import com.back.global.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @MappedSuperclass
 @Getter
+@Setter(AccessLevel.PROTECTED)
 @NoArgsConstructor
 public abstract class BaseMember extends BaseEntity {
     @Column(unique = true)

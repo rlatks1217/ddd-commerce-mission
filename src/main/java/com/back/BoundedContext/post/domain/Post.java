@@ -1,6 +1,6 @@
-package com.back.BoundedContext.post.domain;
+package com.back.boundedContext.post.domain;
 
-import com.back.BoundedContext.post.dto.PostDto;
+import com.back.boundedContext.post.dto.PostDto;
 import com.back.global.entity.BaseGeneratedInfo;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -48,8 +48,9 @@ public class Post extends BaseGeneratedInfo {
         );
     }
 
-    public void comment(PostMember author, String content) {
+    public PostComment addComment(PostMember author, String content) {
         PostComment comment = new PostComment(this, author, content);
         comments.add(comment);
+        return comment;
     }
 }

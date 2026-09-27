@@ -1,7 +1,8 @@
-package com.back.BoundedContext.member.in;
+package com.back.boundedContext.member.in;
 
-import com.back.BoundedContext.post.app.PostFacade;
-import com.back.shared.member.event.MemberJoinEvent;
+import com.back.boundedContext.member.app.MemberFacade;
+import com.back.shared.post.event.CreatePostCommentEvent;
+import com.back.shared.post.event.CreatePostEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,11 +13,17 @@ import static org.springframework.transaction.annotation.Propagation.REQUIRES_NE
 @Component
 @RequiredArgsConstructor
 public class MemberEventListener {
-    private final PostFacade postFacade;
+    private final MemberFacade memberFacade;
 
     @TransactionalEventListener
     @Transactional(propagation = REQUIRES_NEW)
-    public void handle(MemberJoinEvent event) {
-        postFacade.syncMember(event.getMember());
+    public void handle(CreatePostEvent event) {
+        memberFacade.increaseActivityScore(event.getPost().getAuthorId(), 3);
+    }
+
+    @TransactionalEventListener
+    @Transactional(propagation = REQUIRES_NEW)
+    public void handle(CreatePostCommentEvent event) {
+        memberFacade.increaseActivityScore(event.getPostComment().getAuthorId(), 1);
     }
 }

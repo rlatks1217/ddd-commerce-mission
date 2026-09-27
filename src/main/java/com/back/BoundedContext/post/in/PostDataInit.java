@@ -1,10 +1,8 @@
-package com.back.BoundedContext.post.in;
+package com.back.boundedContext.post.in;
 
-import com.back.BoundedContext.member.app.MemberFacade;
-import com.back.BoundedContext.member.domain.Member;
-import com.back.BoundedContext.post.app.PostFacade;
-import com.back.BoundedContext.post.domain.Post;
-import com.back.BoundedContext.post.domain.PostMember;
+import com.back.boundedContext.post.app.PostFacade;
+import com.back.boundedContext.post.domain.Post;
+import com.back.boundedContext.post.domain.PostMember;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -54,6 +52,6 @@ public class PostDataInit {
     public void makeBasePostComments() {
         PostMember user1 = postFacade.findByUsername("user1").get();
         Post post = postFacade.finById(1).get();
-        post.comment(user1, "댓글1");
+        postFacade.addComment(post, user1, "댓글1");
     }
 }

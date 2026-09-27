@@ -1,7 +1,7 @@
-package com.back.BoundedContext.post.domain;
+package com.back.boundedContext.post.domain;
 
 
-import com.back.BoundedContext.post.dto.PostCommentDto;
+import com.back.boundedContext.post.dto.PostCommentDto;
 import com.back.global.entity.BaseGeneratedInfo;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

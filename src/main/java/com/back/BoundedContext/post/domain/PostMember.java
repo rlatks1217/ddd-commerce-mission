@@ -1,4 +1,4 @@
-package com.back.BoundedContext.post.domain;
+package com.back.boundedContext.post.domain;
 
 import com.back.shared.member.domain.ReplicaMember;
 import jakarta.persistence.Entity;

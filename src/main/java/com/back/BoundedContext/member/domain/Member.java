@@ -1,7 +1,7 @@
-package com.back.BoundedContext.member.domain;
+package com.back.boundedContext.member.domain;
 
 import com.back.shared.member.domain.SourceMember;
-import com.back.BoundedContext.member.dto.MemberDto;
+import com.back.boundedContext.member.dto.MemberDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -25,5 +25,9 @@ public class Member extends SourceMember {
                 getNickname(),
                 getActivityScore()
         );
+    }
+
+    public void increaseActivityScore(int amount) {
+        setActivityScore(getActivityScore() + amount);
     }
 }

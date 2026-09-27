@@ -1,7 +1,7 @@
-package com.back.BoundedContext.member.in;
+package com.back.boundedContext.member.in;
 
-import com.back.BoundedContext.member.app.MemberFacade;
-import com.back.BoundedContext.member.domain.Member;
+import com.back.boundedContext.member.app.MemberFacade;
+import com.back.boundedContext.member.domain.Member;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +33,7 @@ public class MemberDataInit {
     @Transactional
     public void makeBaseMembers() {
         if (memberFacade.count() > 0) return;
-        
+
         Member system = memberFacade.join("system", "1234", "system").getData();
         Member holding = memberFacade.join("holding", "1234", "system").getData();
         Member admin = memberFacade.join("admin", "1234", "system").getData();

@@ -1,18 +1,16 @@
-package com.back.BoundedContext.post.app;
+package com.back.boundedContext.post.app;
 
-import com.back.BoundedContext.member.domain.Member;
-import com.back.BoundedContext.member.dto.MemberDto;
-import com.back.BoundedContext.post.domain.Post;
-import com.back.BoundedContext.post.domain.PostMember;
-import com.back.BoundedContext.post.out.PostMemberRepository;
-import com.back.BoundedContext.post.out.PostRepository;
+import com.back.boundedContext.member.dto.MemberDto;
+import com.back.boundedContext.post.domain.Post;
+import com.back.boundedContext.post.domain.PostComment;
+import com.back.boundedContext.post.domain.PostMember;
+import com.back.boundedContext.post.out.PostMemberRepository;
+import com.back.boundedContext.post.out.PostRepository;
 import com.back.global.response.RsData;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.awt.color.ICC_Profile;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,6 +19,7 @@ public class PostFacade {
     private final PostMemberRepository postMemberRepository;
     private final PostRepository postRepository;
     private final PostWriteUseCase postWriteUseCase;
+    private final PostCommentWriteUseCase postPostCommentWriteUseCase;
 
     @Transactional
     public void syncMember(MemberDto member) {
@@ -54,5 +53,9 @@ public class PostFacade {
 
     public Optional<Post> finById(int id) {
         return postRepository.findById(id);
+    }
+
+    public RsData<PostComment> addComment(Post post, PostMember auther, String comment) {
+        return postPostCommentWriteUseCase.addComment(post, auther, comment);
     }
 }

@@ -1,7 +1,7 @@
-package com.back.BoundedContext.member.app;
+package com.back.boundedContext.member.app;
 
-import com.back.BoundedContext.member.domain.Member;
-import com.back.BoundedContext.member.out.MemberRepository;
+import com.back.boundedContext.member.domain.Member;
+import com.back.boundedContext.member.out.MemberRepository;
 import com.back.global.exception.DomainException;
 import com.back.global.response.RsData;
 import com.back.shared.member.event.MemberJoinEvent;

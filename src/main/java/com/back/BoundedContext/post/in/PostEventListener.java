@@ -1,6 +1,6 @@
-package com.back.BoundedContext.post.in;
+package com.back.boundedContext.post.in;
 
-import com.back.BoundedContext.post.app.PostFacade;
+import com.back.boundedContext.post.app.PostFacade;
 import com.back.shared.member.event.MemberJoinEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
